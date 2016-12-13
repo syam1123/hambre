@@ -2,9 +2,9 @@
   "name": "hambre",
   "private": true,
   "dependencies": {
-    "angular": "~1.4.7",
-    "angular-animate": "^1.4.7",
-    "angular-material": "~1.0.9",
+    "angular": "#1.4.9",
+    "angular-animate": "#1.4.9",
+    "angular-material": "#1.1.0",
     "angular-ui-router": "^0.2.15",
     "oclazyload": "~1.0.8",
     "ngstorage": "~0.3.10",
@@ -16,7 +16,7 @@
   },
   "resolutions": {
     "angular": "1.5.8",
-    "angular-animate": "^1.4.7",
+    "angular-animate": "#1.4.9",
     "moment": ">=2.8.0 <2.11.0"
   }
 }

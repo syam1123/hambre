@@ -27,7 +27,7 @@ angular
         url: 'search',
         templateUrl: 'views/searchResto.tmpl.html',
         controller: 'restoSearchCtrl',
-        controllerAs: 'search'
+        controllerAs: 'resto'
       })
     
     $localStorageProvider.setKeyPrefix('hambre-')

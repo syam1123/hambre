@@ -1,1 +1,26 @@
-searching will be here
+<div layout="column" ng-cloak>
+  <md-content class="md-padding">
+    <form ng-submit="$event.preventDefault()">
+      <p>Use <code>md-autocomplete</code> to search for matches from local or remote data sources.</p>
+      <md-autocomplete
+          ng-disabled="isDisabled"
+          md-no-cache="noCache"
+          md-selected-item="resto.selectedItem"
+          md-search-text-change="resto.searchTextChange(resto.searchText)"
+          md-search-text="resto.searchText"
+          md-selected-item-change="resto.selectedItemChange(item)"
+          md-items="item in resto.querySearch(searchText)"
+          md-item-text="item.title"
+          md-min-length="0"
+          placeholder="What is your favorite US state?">
+        <md-item-template>
+          <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.title}}</span>
+        </md-item-template>
+        <md-not-found>
+          Your place is not listed
+        </md-not-found>
+      </md-autocomplete>
+      <br/>
+    </form>
+  </md-content>
+</div>
