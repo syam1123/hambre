@@ -38,7 +38,6 @@
       })
       .then(function (data) {
         deferred.resolve(data);
-        $localStorage.localData = data
       },function(data){
         deferred.resolve(data);
       })

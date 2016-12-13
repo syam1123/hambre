@@ -29,6 +29,12 @@ angular
         controller: 'restoSearchCtrl',
         controllerAs: 'resto'
       })
+      .state('home.restaurants', {
+        url: 'restaurants',
+        templateUrl: 'views/restaurents.tmpl.html',
+        controller: 'restoListCtrl',
+        controllerAs: 'list'
+      })
     
     $localStorageProvider.setKeyPrefix('hambre-')
     

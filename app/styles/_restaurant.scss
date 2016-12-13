@@ -1,0 +1,100 @@
+.restaurant-page{
+  min-height: 100vh;
+  background: #f3f0f0;
+  h1{
+    margin: 0;
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: 500;
+    color: #444;
+  }
+  .restaurant-list-container{
+    display: flex;
+    justify-content: space-around;
+    .left-filters{
+      width: 250px;
+    }
+    .right-filters{
+      width: 250px;
+    }
+    .restaurant-list{
+      flex: 1;
+    }
+    .restaurant-list{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      background: white;
+      max-width: 800px;
+      padding: 33px 10px;
+      border-radius: 11px;
+      .resto-small-card{
+        width: 30%;
+        padding: .5%;
+        margin: 1%;
+        cursor: pointer;
+        padding-bottom: 15px;
+        img{
+          height: 150px;
+          margin: auto;
+          display: block;
+          border-radius: 10px;
+          max-width: 100%;
+          min-width: 100%;
+        }
+        h2{
+          font-size: 16px;
+          text-align: left;
+          margin: 5px 0px;
+          color: #111;
+        }
+        .address{
+          color: #888;
+          font-weight: 500;
+        }
+        .user-rating{
+          display: block;
+          margin-top: -29px;
+          position: absolute;
+          float: right;
+          z-index: 10;
+          .Poor{
+            background: #e9430e;
+            &:before{
+              border-bottom:6px solid #a93b18;
+            }
+          }
+          .Average{
+            background: #ffc107;
+            &:before{
+              border-bottom: 6px solid #ad8818;
+            }
+          }
+          .Excellent{
+            background: #19ab19;
+          }
+          span{
+            background: green;
+            padding: 5px 10px;
+            margin-left: -5px;
+            color: white;
+            &:before{
+              content: "";
+              /* border-left: 10px solid red; */
+              /* margin-left: -10px; */
+              border-top: 6px solid transparent;
+              border-left: 6px solid transparent;
+              border-bottom: 6px solid #057105;
+              width: 0;
+              margin-top: -15px;
+              /* margin-right: -200px; */
+              position: absolute;
+              margin-left: -9px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

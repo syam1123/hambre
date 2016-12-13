@@ -4,9 +4,9 @@
   angular.module('hambreApp')
     .factory('restaurantApiService', restaurantApiService)
 
-  restaurantApiService.$inject = ['$http', '$q', '$window', 'HAMBREENV']
+  restaurantApiService.$inject = ['$http', '$q', '$window', 'HAMBREENV', '$localStorage']
 
-  function restaurantApiService($http, $q, $window, HAMBREENV) {
+  function restaurantApiService($http, $q, $window, HAMBREENV, $localStorage) {
     var API_ENDPOINT = HAMBREENV.API_ENDPOINT,
         APIPATH = {
           search: 'api/v2.1/search',
@@ -15,10 +15,10 @@
           dailyMenu: 'api/v2.1/dailymenu'
         }
     return{
-      searchForRestos : searchForRestos
+      searchForRestos: searchForRestos
     }
     
-    function searchForRestos(locObj, offset){
+    function searchForRestos(locObj, offset, count){
       var deferred = $q.defer();
 
       $http({
@@ -28,12 +28,13 @@
           lat: locObj.latitude,
           lon: locObj.longitude,
           start: offset,
-          count: 20
+          count: count
         }
       })
       .then(function (data) {
         deferred.resolve(data);
-        $localStorage.allrestos = data
+        console.log("data in promise", data);
+        $localStorage.nearbyRestos.push.apply($localStorage.nearbyRestos, data.data.restaurants)
       },function(data){
         deferred.resolve(data);
       })

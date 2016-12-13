@@ -4,9 +4,9 @@
       .module('hambreApp')
       .controller('restoSearchCtrl', restoSearchCtrl);
   
-  restoSearchCtrl.$inject = ['$scope', '$timeout', '$q', '$log', 'locationApiService', 'commonApiService', 'restaurantApiService']
+  restoSearchCtrl.$inject = ['$scope', 'locationApiService', 'commonApiService', 'restaurantApiService', '$state', '$localStorage']
 
-  function restoSearchCtrl ($scope, $timeout, $q, $log, locationApiService, commonApiService, restaurantApiService) {
+  function restoSearchCtrl ($scope, locationApiService, commonApiService, restaurantApiService, $state, $localStorage) {
     
     var resto = this
     resto.locationSuggestions = []
@@ -18,6 +18,12 @@
     
     self.simulateQuery = false;
     self.isDisabled    = false;
+    
+    self.init = function(){
+      $localStorage.nearbyRestos = []
+    }
+    
+    self.init()
 
     // ******************************
     // Internal methods
@@ -46,7 +52,7 @@
     }
 
     function selectedItemChange(item) {
-      $log.info('Item changed to ' + JSON.stringify(item));
+      console.log('Item changed to ' + JSON.stringify(item));
     }
 
     /**
@@ -70,7 +76,6 @@
     
     resto.getlocation = function(){
       if (navigator.geolocation) {
-        console.log("clicked");
         navigator.geolocation.getCurrentPosition(function(position){
           $scope.$apply(function(){
             $scope.position = position;
@@ -84,16 +89,29 @@
     }
     
     function searchRestos(locObj){
-      console.log("locObj", locObj);
+      $localStorage.locationData = locObj
       if(!resto.storeOffset){
         resto.storeOffset = 0
       }
       else{
-        resto.storeOffset += 20
+        resto.storeOffset += 99
       }
-      restaurantApiService.searchForRestos(locObj, resto.storeOffset).then(function(res){
-        console.log("all restos", res.data);
-      })
+//      The api returns maximum 20 results. But we need 99
+      var newOffset = resto.storeOffset
+      var count = 20
+      for(var i=0; i<5; i++){
+        newOffset = resto.storeOffset+(i*20)
+        if(i >= 4){
+          count = 19
+        }
+        restaurantApiService.searchForRestos(locObj, newOffset, count).then(function(res){
+          console.log("all restos", res.data);
+          if(count == 19)
+            $state.go('home.restaurants')
+        })
+      }
     }
+    
+    
   } 
 })();
