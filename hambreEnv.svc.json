@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "HAMBREENV": {
+      "API_ENDPOINT" : "https://developers.zomato.com/",
+      "USER_KEY": "076ab577bbb0b2476c8387f8dde1b466"
+    }
+  },
+  "prod": {
+    "HAMBREENV": {
+      "API_ENDPOINT" : "https://developers.zomato.com/",
+      "USER_KEY": "076ab577bbb0b2476c8387f8dde1b466"
+    }
+  },
+  "local": {
+    "HAMBREENV": {
+      "API_ENDPOINT" : "https://developers.zomato.com/",
+      "USER_KEY": "076ab577bbb0b2476c8387f8dde1b466"
+    }
+  }
+}
