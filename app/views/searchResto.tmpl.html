@@ -1,7 +1,7 @@
-<div layout="column" ng-cloak>
+<div class="search-container" layout="column" ng-cloak>
   <md-content class="md-padding">
-    <form ng-submit="$event.preventDefault()">
-      <p>Use <code>md-autocomplete</code> to search for matches from local or remote data sources.</p>
+    <h1>Find the best restaurants, cafés, and bars near to you</h1>
+    <form class="location-search" ng-submit="$event.preventDefault()">
       <md-autocomplete
           ng-disabled="isDisabled"
           md-no-cache="noCache"
@@ -12,14 +12,16 @@
           md-items="item in resto.querySearch(searchText)"
           md-item-text="item.title"
           md-min-length="0"
-          placeholder="What is your favorite US state?">
+          placeholder="Enter your location">
         <md-item-template>
           <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.title}}</span>
         </md-item-template>
         <md-not-found>
-          Your place is not listed
+          Sorry! Your place is not listed
         </md-not-found>
       </md-autocomplete>
+      <button ng-click="resto.getlocation()">detect</button>
+      <button ng-click="resto.searchRestos(resto.selectedItem)" ng-disabled="!resto.selectedItem">Search</button>
       <br/>
     </form>
   </md-content>

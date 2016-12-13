@@ -29,19 +29,19 @@
       var deferred = $q.defer();
 
       $http({
-          url: API_ENDPOINT + APIPATH.geoCode,
-          method: 'GET',
-          params: {
-            lat: locObj.latitude,
-            lon: locObj.longitude
-          }
-        })
-        .then(function (data) {
-          deferred.resolve(data);
-          $localStorage.localData = data
-        },function(data){
-          deferred.resolve(data);
-        })
+        url: API_ENDPOINT + APIPATH.geoCode,
+        method: 'GET',
+        params: {
+          lat: locObj.latitude,
+          lon: locObj.longitude
+        }
+      })
+      .then(function (data) {
+        deferred.resolve(data);
+        $localStorage.localData = data
+      },function(data){
+        deferred.resolve(data);
+      })
 
       return deferred.promise;
     }

@@ -4,9 +4,9 @@
       .module('hambreApp')
       .controller('restoSearchCtrl', restoSearchCtrl);
   
-  restoSearchCtrl.$inject = ['$scope', '$timeout', '$q', '$log', 'locationApiService']
+  restoSearchCtrl.$inject = ['$scope', '$timeout', '$q', '$log', 'locationApiService', 'commonApiService', 'restaurantApiService']
 
-  function restoSearchCtrl ($scope, $timeout, $q, $log, locationApiService) {
+  function restoSearchCtrl ($scope, $timeout, $q, $log, locationApiService, commonApiService, restaurantApiService) {
     
     var resto = this
     resto.locationSuggestions = []
@@ -14,6 +14,7 @@
     resto.querySearch   = querySearch;
     resto.selectedItemChange = selectedItemChange;
     resto.searchTextChange   = searchTextChange;
+    resto.searchRestos = searchRestos;
     
     self.simulateQuery = false;
     self.isDisabled    = false;
@@ -49,10 +50,9 @@
     }
 
     /**
-     * Build `states` list of key/value pairs
+     * Build locationlist
      */
     function loadAll() {
-      console.log("resto.locationSuggestions in loadall", resto.locationSuggestions);
       return (resto.locationSuggestions)
     }
 
@@ -66,6 +66,34 @@
         return (state.value.indexOf(lowercaseQuery) === 0);
       };
 
+    }
+    
+    resto.getlocation = function(){
+      if (navigator.geolocation) {
+        console.log("clicked");
+        navigator.geolocation.getCurrentPosition(function(position){
+          $scope.$apply(function(){
+            $scope.position = position;
+            console.log("location", $scope.position);
+            commonApiService.getGeoCode($scope.position.coords).then(function(response){
+              resto.selectedItem = response.data.location
+            })
+          });
+        });
+      }
+    }
+    
+    function searchRestos(locObj){
+      console.log("locObj", locObj);
+      if(!resto.storeOffset){
+        resto.storeOffset = 0
+      }
+      else{
+        resto.storeOffset += 20
+      }
+      restaurantApiService.searchForRestos(locObj, resto.storeOffset).then(function(res){
+        console.log("all restos", res.data);
+      })
     }
   } 
 })();

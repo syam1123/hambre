@@ -1,0 +1,36 @@
+.location-search{
+  display: flex;
+  align-items: center;
+  width: 75%;
+  margin: auto;
+  max-width: 950px;
+  padding: 50px;
+  background: rgba(255,255,255,0.43);
+  border-radius: 10px;
+  border: 1px solid #009688;
+  md-autocomplete{
+    flex: 1;
+  }
+  >button{
+    height: 40px;
+    margin-left: 14px;
+  }
+}
+.search-container{
+  --size: 60px;
+  --total: 100vh;
+  height: calc(var(--total) - var(--size));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  md-content{
+    width: 100%;
+    background: transparent;
+    h1{
+      text-align: center;
+      color: white;
+      font-size: 27px;
+      font-weight: 500;
+    }
+  }
+}
