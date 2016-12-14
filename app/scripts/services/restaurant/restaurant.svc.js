@@ -15,7 +15,9 @@
           dailyMenu: 'api/v2.1/dailymenu'
         }
     return{
-      searchForRestos: searchForRestos
+      searchForRestos: searchForRestos,
+      getRestoDetail: getRestoDetail,
+      getReviews: getReviews
     }
     
     function searchForRestos(locObj, offset, count){
@@ -41,5 +43,49 @@
 
       return deferred.promise;
     } 
+    
+    function getReviews(id, offset=0, count=20){
+      var deferred = $q.defer();
+
+      $http({
+        url: API_ENDPOINT + APIPATH.reviews,
+        method: 'GET',
+        params: {
+          res_id: id,
+          start: offset,
+          count: count
+        }
+      })
+      .then(function (data) {
+        deferred.resolve(data);
+        console.log("data in promise", data);
+        $localStorage.nearbyRestos.push.apply($localStorage.nearbyRestos, data.data.restaurants)
+      },function(data){
+        deferred.resolve(data);
+      })
+
+      return deferred.promise;
+    } 
+    
+    function getRestoDetail(id){
+      var deferred = $q.defer();
+
+      $http({
+        url: API_ENDPOINT + APIPATH.restaurant,
+        method: 'GET',
+        params: {
+          res_id: id
+        }
+      })
+      .then(function (data) {
+        deferred.resolve(data);
+        console.log("data in promise", data);
+        $localStorage.nearbyRestos.push.apply($localStorage.nearbyRestos, data.data.restaurants)
+      },function(data){
+        deferred.resolve(data);
+      })
+
+      return deferred.promise;
+    }
   }
 })();

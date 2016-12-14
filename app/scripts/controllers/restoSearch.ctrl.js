@@ -4,9 +4,9 @@
       .module('hambreApp')
       .controller('restoSearchCtrl', restoSearchCtrl);
   
-  restoSearchCtrl.$inject = ['$scope', 'locationApiService', 'commonApiService', 'restaurantApiService', '$state', '$localStorage']
+  restoSearchCtrl.$inject = ['$scope', 'locationApiService', 'commonApiService', 'restaurantApiService', '$state', '$localStorage', '$document']
 
-  function restoSearchCtrl ($scope, locationApiService, commonApiService, restaurantApiService, $state, $localStorage) {
+  function restoSearchCtrl ($scope, locationApiService, commonApiService, restaurantApiService, $state, $localStorage, $document) {
     
     var resto = this
     resto.locationSuggestions = []

@@ -10,6 +10,7 @@
     
     var list = this
     list.getRestaurantsToShow = getRestaurantsToShow
+    list.getMoreDetails = getMoreDetails
     
     list.init = function(){
       list.restaurants = $localStorage.nearbyRestos
@@ -22,6 +23,11 @@
     
     function getRestaurantsToShow(){
       return list.restaurants
+    }
+    
+    function getMoreDetails(id){
+      console.log("id here in call", id);
+      $state.go('home.restaurantDetail', {'id': id})
     }
   }
   

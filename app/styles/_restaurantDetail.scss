@@ -1,0 +1,128 @@
+.restaurant-detail{
+  background: $commonBackground;
+  min-height: 100vh;
+  padding: 50px;
+  .detail-container{
+    background: $colorWhite;
+    margin: auto;
+    max-width: 1000px;
+    padding: 15px;
+    border-radius: 7px;
+    box-shadow: 0px 0px 4px 1px #dedede;
+    .image-container{
+      height: 250px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-start;
+      border-radius: 7px;
+      img{
+        width: 100%;
+        &:hover{
+          opacity: .8;
+        }
+      }
+      .photos, .take-to-zomato{
+        margin: 10px;
+        padding: 7px 10px;
+        border-radius: 5px;
+        font-weight: 500;
+      }
+      .photos{
+        background: white;
+        color: rgb(207, 27, 49);
+      }
+      .take-to-zomato{
+        background: rgb(207, 27, 49);
+        color: white;
+      }
+      .button-container{
+        position: absolute;
+        margin-top: 200px;
+      }
+    }
+    .address{
+      margin-top: 0;
+      font-weight: 500;
+      color: #888;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #dcdcdc;
+      p{
+        margin: 3px 0px;
+        font-weight: 400;
+      }
+    }
+    .name-container{
+      display: flex;
+      align-items: center;
+      h1{
+        flex: 1;
+        margin-bottom: 0;
+      }
+      .online-order{
+        background: green;
+        padding: 5px 20px 5px 33px;
+        color: white;
+        font-weight: 500;
+        font-size: 22px;
+        margin-right: -23px;
+        &.order-available-0{
+          background: #9E9E9E;
+          cursor: not-allowed;
+          pointer-events: none;
+          &:after{
+            border-bottom: 7px solid #7a7676;
+          }
+        }
+        &:after{
+          content: "";
+          border-top: 7px solid transparent;
+          border-right: 7px solid transparent;
+          border-bottom: 7px solid #035603;
+          width: 0;
+          margin-top: -18px;
+          /* margin-right: -200px; */
+          position: absolute;
+          margin-left: 13px;
+        }
+        &:before{
+          content: "";
+          position: absolute;
+          margin-left: -33px;
+          margin-top: -6px;
+          border-top: 20px solid transparent;
+          border-bottom: 20px solid transparent;
+          border-left: 20px solid white;
+        }
+      }
+    }
+  }
+}
+
+.map-container{
+  h1{
+    text-align: center;
+    font-family: initial;
+    font-size: 24px;
+    color: #607d8b;
+  }
+}
+
+.angular-google-map-container{
+  height: 300px;
+}
+
+.resto-reviews{
+  max-width: 1000px;
+  margin: auto;
+  padding: 15px;
+  background: white;
+  margin-top: 20px;
+  border-radius: 7px;
+  box-shadow: 0px 0px 4px 1px #dedede;
+  .heading{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+}

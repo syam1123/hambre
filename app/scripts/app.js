@@ -7,7 +7,8 @@ angular
     'ngMessages',
     '720kb.tooltips',
     'angularMoment',
-    'ngCookies'
+    'ngCookies',
+    'google-maps'
   ])
   .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$localStorageProvider', '$httpProvider', function ($locationProvider, $stateProvider, $urlRouterProvider, $localStorageProvider, $httpProvider) {
     $locationProvider.html5Mode(true);
@@ -34,6 +35,26 @@ angular
         templateUrl: 'views/restaurents.tmpl.html',
         controller: 'restoListCtrl',
         controllerAs: 'list'
+      })
+      .state('home.restaurantDetail', {
+        url: 'restaurants/:id',
+        templateUrl: 'views/restaurentDetail.tmpl.html',
+        controller: 'restoDetailCtrl',
+        controllerAs: 'detail',
+        resolve: {
+          RestaruantDetail:['restaurantApiService', '$stateParams', function (restaurantApiService, $stateParams) {
+            return restaurantApiService.getRestoDetail($stateParams.id).then(function(res) {
+                console.log("restaurent details", res);
+                return res.data
+              })
+          }],
+          ReviewObj:['restaurantApiService', '$stateParams', function (restaurantApiService, $stateParams) {
+            return restaurantApiService.getReviews($stateParams.id).then(function(res) {
+                console.log("restaurent details", res);
+                return res.data
+              })
+          }]
+        }
       })
     
     $localStorageProvider.setKeyPrefix('hambre-')

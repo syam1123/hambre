@@ -3,7 +3,7 @@
   <div class="restaurant-list-container">
     <div class="left-filters">filter</div>
     <div class="restaurant-list">
-      <div class="resto-small-card" ng-repeat="rest in list.restaurantsToShow">
+      <div class="resto-small-card" ng-repeat="rest in list.restaurantsToShow" ng-click="list.getMoreDetails(rest.restaurant.id)">
         <img ng-if="rest.restaurant.thumb" src={{rest.restaurant.thumb}} alt="">
         <img ng-if="!rest.restaurant.thumb" src={{list.noImage}} alt="">
         <span class="user-rating">
