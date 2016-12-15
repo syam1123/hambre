@@ -61,26 +61,14 @@ angular
     
   }])
   .run(['amMoment', '$state', '$location', '$rootScope', '$localStorage', '$cookies', 'HAMBREENV', function (amMoment, $state, $location, $rootScope, $localStorage, $cookies, HAMBREENV) {
-    amMoment.changeLocale('en_au');
-    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    if (userAgent.match(/iPhone/i) || userAgent.match(/Android/i)) {
-      $location.path('/m')
-    }
+
+    $rootScope.baseUrl = HAMBREENV.BASE_URL
+    $rootScope.$apply()
 
     $rootScope.$on('$locationChangeSuccess', function () {
       $rootScope.actualLocation = $location.path();
     });
 
-    function getGuid() {
-      var t = (new Date).getTime(),
-        e = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (e) {
-          var a = (t + 16 * Math.random()) % 16 | 0;
-          return t = Math.floor(t / 16), ("x" == e ? a : 3 & a | 8).toString(16)
-        });
-      return e
-    }
-
-    if (!$cookies.get('sessionid')) $cookies.put('sessionid', getGuid())
     if (!$cookies.get('userkey')) $cookies.put('userkey', HAMBREENV.USER_KEY)
   }])
   .config(['$httpProvider', 'HAMBREENV', function ($httpProvider, HAMBREENV) {

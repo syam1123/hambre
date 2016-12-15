@@ -2,19 +2,22 @@
   "dev": {
     "HAMBREENV": {
       "API_ENDPOINT" : "https://developers.zomato.com/",
-      "USER_KEY": "076ab577bbb0b2476c8387f8dde1b466"
+      "USER_KEY": "076ab577bbb0b2476c8387f8dde1b466",
+      "BASE_URL": "/"
     }
   },
   "prod": {
     "HAMBREENV": {
       "API_ENDPOINT" : "https://developers.zomato.com/",
-      "USER_KEY": "076ab577bbb0b2476c8387f8dde1b466"
+      "USER_KEY": "076ab577bbb0b2476c8387f8dde1b466",
+      "BASE_URL": "https://syam1123.github.io/hambre/"
     }
   },
   "local": {
     "HAMBREENV": {
       "API_ENDPOINT" : "https://developers.zomato.com/",
-      "USER_KEY": "076ab577bbb0b2476c8387f8dde1b466"
+      "USER_KEY": "076ab577bbb0b2476c8387f8dde1b466",
+      "BASE_URL": "/"
     }
   }
 }

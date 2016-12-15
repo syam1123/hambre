@@ -121,7 +121,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist', 'www']));
 
-gulp.task('serve', ['styles', 'setenv:local', 'html', 'images', 'fonts', 'extras'], () => {
+gulp.task('serve', ['styles', 'setenv:local'], () => {
   browserSync({
     notify: false,
     port: 9001,
@@ -224,7 +224,7 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['setenv:prod', 'html', 'images', 'fonts', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({
     title: 'build',
     gzip: true
