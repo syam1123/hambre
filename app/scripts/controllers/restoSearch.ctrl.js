@@ -25,14 +25,6 @@
     
     self.init()
 
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
     function querySearch (query) {
       var results = query ? loadAll().filter( createFilterFor(query) ) : loadAll(),
           deferred;

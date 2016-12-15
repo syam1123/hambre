@@ -22,11 +22,10 @@
     list.init()
     
     function getRestaurantsToShow(){
-      return list.restaurants
+      return (list.restaurants)
     }
     
     function getMoreDetails(id){
-      console.log("id here in call", id);
       $state.go('home.restaurantDetail', {'id': id})
     }
   }
