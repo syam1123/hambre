@@ -37,10 +37,5 @@
     "opn": "^1.0.1",
     "run-sequence": "^1.1.5",
     "wiredep": "^2.2.2"
-  },
-  "scripts": {
-    "start": "node",
-    "test": "mocha",
-    "postinstall": "bower install && gulp build"
   }
 }
