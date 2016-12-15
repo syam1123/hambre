@@ -39,7 +39,8 @@
     "wiredep": "^2.2.2"
   },
   "scripts": {
-    "start": "node app",
-    "postinstall": "bower install & gulp serve"
+    "start": "node",
+    "test": "mocha",
+    "postinstall": "bower install && gulp build"
   }
 }
