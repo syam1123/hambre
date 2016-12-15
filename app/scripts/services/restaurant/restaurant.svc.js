@@ -44,7 +44,9 @@
       return deferred.promise;
     } 
     
-    function getReviews(id, offset=0, count=20){
+    function getReviews(id, offset, count){
+      var offsetVal = offset? offset: 0
+      var totalCount = count? count: 0
       var deferred = $q.defer();
 
       $http({
@@ -52,8 +54,8 @@
         method: 'GET',
         params: {
           res_id: id,
-          start: offset,
-          count: count
+          start: offsetVal,
+          count: totalCount
         }
       })
       .then(function (data) {

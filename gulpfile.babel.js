@@ -120,7 +120,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist', 'www']));
 
-gulp.task('serve', ['styles', 'setenv:local'], () => {
+gulp.task('serve', ['styles', 'setenv:local', 'html', 'images', 'fonts', 'extras'], () => {
   browserSync({
     notify: false,
     port: 9001,
