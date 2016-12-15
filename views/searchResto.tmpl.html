@@ -20,8 +20,8 @@
           Sorry! Your place is not listed
         </md-not-found>
       </md-autocomplete>
-      <button ng-click="resto.getlocation()">detect</button>
-      <button ng-click="resto.searchRestos(resto.selectedItem)" ng-disabled="!resto.selectedItem">Search</button>
+      <button class="detect-btn" ng-click="resto.getlocation()">detect</button>
+      <button class="search-btn" ng-click="resto.searchRestos(resto.selectedItem)" ng-disabled="!resto.selectedItem">Search</button>
       <br/>
     </form>
   </md-content>

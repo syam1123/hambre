@@ -27,10 +27,20 @@
   <div class="resto-reviews">
     <div class="heading">
       <h2>Reviews</h2>
-      <div>{{detail.restoData.user_rating.aggregate_rating}}</div>
+      <div class="review"><div class={{detail.restoData.user_rating.rating_text}}>{{detail.restoData.user_rating.aggregate_rating}}</div></div>
     </div>
     <div class="each-review" ng-repeat="review in detail.reviews">
-      <img src="{{review.review.user.profile_image}}" alt="">
+      <div class="profile">
+        <img src="{{review.review.user.profile_image}}" alt="">
+        <div class="profile-details">
+          <h3>{{review.review.user.name}}</h3>
+          <p>{{review.review.user.foodie_level}}</p>
+        </div>
+      </div>
+      <div class="review-details">
+        <p class="time">{{review.review.review_time_friendly}}</p>
+        <span class="review-text"><b>Rated</b> <span class={{review.review.rating_text}} style="background: #{{review.review.rating_color}}">{{review.review.rating}}</span> : {{review.review.review_text}}</span>
+      </div>
     </div>
   </div>
 </div>
