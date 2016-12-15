@@ -4,8 +4,6 @@
 /bower_components/
 /node_modules/
 /dist/
-dist/index.html
-/dist/index.html
 .publish/
 /.tmp/
 .DS_Store
