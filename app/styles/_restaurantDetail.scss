@@ -30,10 +30,12 @@
       .photos{
         background: white;
         color: rgb(207, 27, 49);
+        border: 1px solid;
       }
       .take-to-zomato{
         background: rgb(207, 27, 49);
         color: white;
+        border: 1px solid #cf1b31;
       }
       .button-container{
         position: absolute;
@@ -123,6 +125,93 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid #dcdcdc;
     cursor: pointer;
+    .review{
+      div{
+        &.Excellent{
+          background: green;
+        }
+        &.Average{
+          background: #ffc107;
+        }
+        &.Poor{
+          background: #e9430e;
+        }
+        &.Good{
+          background: #CDDC39;
+        }
+        background: #777;
+        padding: 5px;
+        border-radius: 3px;
+        color: white;
+        font-weight: 700;
+        font-size: 18px;
+      }
+    }
+  }
+  .each-review{
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ededed;
+    &:last-child{
+      border-bottom: none;
+    }
+    .profile{
+      display: flex;
+      align-items: center;
+      img{
+        max-width: 75px;
+        margin: 10px;
+        border-radius: 50%;
+      }
+      .profile-details{
+        margin-left: 10px;
+        p{
+          margin: 0;
+          font-size: 14px;
+          color: #888;
+          font-weight: 500;
+        }
+        h3{
+          margin: 0;
+          color: #333;
+        }
+      }
+    }
+    .review-details{
+      margin: 10px;
+      .time{
+        margin: 0;
+        color: #777;
+        font-weight: 500;
+      }
+      .review-text{
+        display: block;
+        margin-top: 10px;
+        font-size: 14px;
+        span{
+          background: green;
+          width: 22px;
+          display: inline-block;
+          text-align: center;
+          padding: 2px;
+          color: white;
+          font-weight: 600;
+          border-radius: 3px;
+          &.Loved{
+            background: green;
+          }
+          &.Average{
+            background: #ffc107;
+          }
+          &.Poor, &.Very.Bad{
+            background: #e9430e;
+          }
+          &.Good{
+            background: #CDDC39;
+          }
+        }
+      }
+    }
   }
 }

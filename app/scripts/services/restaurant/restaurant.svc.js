@@ -20,23 +20,28 @@
       getReviews: getReviews
     }
     
-    function searchForRestos(locObj, offset, count){
+    function searchForRestos(locObj, offset, count, filter){
       var deferred = $q.defer();
 
       $http({
         url: API_ENDPOINT + APIPATH.search,
         method: 'GET',
         params: {
-          lat: locObj.latitude,
-          lon: locObj.longitude,
+          lat: locObj.lat,
+          lon: locObj.lon,
+          cuisines: locObj.cuisines,
+          establishment_type: locObj.establishment_type,
+          collection_id: locObj.collection_id,
+          category: locObj.category,
           start: offset,
           count: count
         }
       })
       .then(function (data) {
         deferred.resolve(data);
-        console.log("data in promise", data);
-        $localStorage.nearbyRestos.push.apply($localStorage.nearbyRestos, data.data.restaurants)
+        if(!filter){
+          $localStorage.nearbyRestos.push.apply($localStorage.nearbyRestos, data.data.restaurants)
+        }
       },function(data){
         deferred.resolve(data);
       })
@@ -46,7 +51,7 @@
     
     function getReviews(id, offset, count){
       var offsetVal = offset? offset: 0
-      var totalCount = count? count: 0
+      var totalCount = count? count: 20
       var deferred = $q.defer();
 
       $http({
@@ -60,7 +65,6 @@
       })
       .then(function (data) {
         deferred.resolve(data);
-        console.log("data in promise", data);
         $localStorage.nearbyRestos.push.apply($localStorage.nearbyRestos, data.data.restaurants)
       },function(data){
         deferred.resolve(data);
@@ -81,7 +85,6 @@
       })
       .then(function (data) {
         deferred.resolve(data);
-        console.log("data in promise", data);
         $localStorage.nearbyRestos.push.apply($localStorage.nearbyRestos, data.data.restaurants)
       },function(data){
         deferred.resolve(data);

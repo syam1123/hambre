@@ -18,14 +18,69 @@
         }
     return{
       getCategory : getCategory,
-      getGeoCode: getGeoCode
+      getGeoCode: getGeoCode,
+      getCollections: getCollections,
+      getCuisines: getCuisines
     }
     
     function getCategory(){
-      console.log("get category");
+      var deferred = $q.defer();
+
+      $http({
+        url: API_ENDPOINT + APIPATH.category,
+        method: 'GET'
+      })
+      .then(function (data) {
+        deferred.resolve(data);
+      },function(data){
+        deferred.resolve(data);
+      })
+
+      return deferred.promise;
     } 
     
+    function getCollections(locObj, count){
+      var deferred = $q.defer();
+
+      $http({
+        url: API_ENDPOINT + APIPATH.collections,
+        method: 'GET',
+        params: {
+          lat: locObj.latitude,
+          lon: locObj.longitude,
+          count: count
+        }
+      })
+      .then(function (data) {
+        deferred.resolve(data);
+      },function(data){
+        deferred.resolve(data);
+      })
+
+      return deferred.promise;
+    }
+    
     function getGeoCode(locObj){
+      var deferred = $q.defer();
+
+      $http({
+        url: API_ENDPOINT + APIPATH.geoCode,
+        method: 'GET',
+        params: {
+          lat: locObj.latitude,
+          lon: locObj.longitude
+        }
+      })
+      .then(function (data) {
+        deferred.resolve(data);
+      },function(data){
+        deferred.resolve(data);
+      })
+
+      return deferred.promise;
+    }
+    
+    function getCuisines(locObj){
       var deferred = $q.defer();
 
       $http({

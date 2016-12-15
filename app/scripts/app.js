@@ -34,7 +34,14 @@ angular
         url: 'restaurants',
         templateUrl: 'views/restaurents.tmpl.html',
         controller: 'restoListCtrl',
-        controllerAs: 'list'
+        controllerAs: 'list',
+        resolve: {
+          categoriesObj: ['commonApiService', function(commonApiService){
+            return commonApiService.getCategory().then(function(res){
+              return res.data;
+            })
+          }]
+        }
       })
       .state('home.restaurantDetail', {
         url: 'restaurants/:id',
@@ -44,13 +51,11 @@ angular
         resolve: {
           RestaruantDetail:['restaurantApiService', '$stateParams', function (restaurantApiService, $stateParams) {
             return restaurantApiService.getRestoDetail($stateParams.id).then(function(res) {
-                console.log("restaurent details", res);
                 return res.data
               })
           }],
           ReviewObj:['restaurantApiService', '$stateParams', function (restaurantApiService, $stateParams) {
             return restaurantApiService.getReviews($stateParams.id).then(function(res) {
-                console.log("restaurent details", res);
                 return res.data
               })
           }]

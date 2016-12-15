@@ -12,11 +12,61 @@
   .restaurant-list-container{
     display: flex;
     justify-content: space-around;
-    .left-filters{
-      width: 250px;
+    .left-filters, .right-filters{
+      width: 225px;
+      background: transparent;
+      border-radius: 7px;
+      max-height: 100vh;
+      overflow: scroll;
+      .filter-list{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background: white;
+        border-radius: 7px;
+        box-shadow: 0px 0px 7px 2px #ddd;
+        border: 1px solid #eee;
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+        h1{
+          padding: 5px;
+          font-weight: 600;
+          font-size: 19px;
+          color: white;
+          border-bottom: 1px solid white;
+          text-align: left;
+        }
+        li{
+          padding: 10px;
+          font-size: 18px;
+          color: #555;
+          cursor: pointer;
+          &:last-child{
+            border-bottom-left-radius: 7px;
+            border-bottom-right-radius: 7px;
+            border-bottom: none;
+          }
+          &.true{
+            background: #cfcfcf;
+            color: #000;
+            border-bottom: 1px solid white;
+          }
+        }
+      }
     }
     .right-filters{
-      width: 250px;
+      .filter-list{
+        h1{
+          background: #009688;
+        }
+      }
+    }
+    .left-filters{
+      .filter-list{
+        h1{
+          background: #FF5722;
+        }
+      }
     }
     .restaurant-list{
       flex: 1;
@@ -28,7 +78,8 @@
       background: white;
       max-width: 760px;
       padding: 33px 10px;
-      border-radius: 11px;
+      border-radius: 7px;
+      box-shadow: 0px 0px 7px 2px #ddd;
       .resto-small-card{
         width: 30%;
 //        padding: .5%;
@@ -114,5 +165,14 @@
         }
       }
     }
+  }
+}
+
+@media screen and (min-width: 1500px){
+  .restaurant-page .restaurant-list-container .left-filters, .restaurant-page .restaurant-list-container .right-filters{
+    width: 270px;
+  }
+  .restaurant-page .restaurant-list-container .restaurant-list{
+    max-width: 850px;
   }
 }

@@ -44,7 +44,7 @@
     }
 
     function selectedItemChange(item) {
-      console.log('Item changed to ' + JSON.stringify(item));
+     // nothing to call here, for future use
     }
 
     /**
@@ -71,7 +71,6 @@
         navigator.geolocation.getCurrentPosition(function(position){
           $scope.$apply(function(){
             $scope.position = position;
-            console.log("location", $scope.position);
             commonApiService.getGeoCode($scope.position.coords).then(function(response){
               resto.selectedItem = response.data.location
             })
@@ -82,6 +81,8 @@
     
     function searchRestos(locObj){
       $localStorage.locationData = locObj
+      var query = {"lat": locObj.latitude,
+                   "lon": locObj.longitude}
       if(!resto.storeOffset){
         resto.storeOffset = 0
       }
@@ -96,8 +97,8 @@
         if(i >= 4){
           count = 19
         }
-        restaurantApiService.searchForRestos(locObj, newOffset, count).then(function(res){
-          console.log("all restos", res.data);
+        
+        restaurantApiService.searchForRestos(query, newOffset, count).then(function(res){
           if(count == 19)
             $state.go('home.restaurants')
         })

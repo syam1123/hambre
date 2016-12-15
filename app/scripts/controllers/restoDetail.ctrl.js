@@ -16,6 +16,7 @@
       detail.userLocation = $localStorage.locationData
       detail.storeLocation = detail.restoData.location
       detail.reviews = ReviewObj.user_reviews
+      window.scrollTo(0, 0);
     }
     detail.init()
     

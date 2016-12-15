@@ -40,7 +40,7 @@
     "wiredep": "^2.2.2"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node",
     "postinstall": "bower install && gulp build"
   },
   "devDependencies": {

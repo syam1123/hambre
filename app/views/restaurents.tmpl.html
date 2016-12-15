@@ -1,8 +1,18 @@
 <div class="restaurant-page">
   <h1>Here are some restaurants near {{list.locatiosData.title}}</h1>
   <div class="restaurant-list-container">
-    <div class="left-filters">filter</div>
+    <div class="left-filters">
+      <ul class="filter-list">
+        <h1>Choose categories</h1>
+        <li class={{each.categories.selected}} ng-repeat="each in list.categoriesObj" ng-click="list.showSpecificCategory(each.categories.id);each.categories.selected = !each.categories.selected">
+          {{each.categories.name}}
+        </li>
+      </ul>
+    </div>
     <div class="restaurant-list">
+      <div class="loader" ng-if="list.showLoader">
+        <img src="../images/ripple.gif" alt="">
+      </div>
       <div class="resto-small-card" ng-repeat="rest in list.restaurantsToShow" ng-click="list.getMoreDetails(rest.restaurant.id)">
         <img ng-if="rest.restaurant.thumb" src={{rest.restaurant.thumb}} alt="">
         <img ng-if="!rest.restaurant.thumb" src={{list.noImage}} alt="">
@@ -13,6 +23,13 @@
         <span class="address">{{rest.restaurant.location.locality}}</span>
       </div>
     </div>
-    <div class="right-filters">price</div>
+    <div class="right-filters">
+      <ul class="filter-list">
+        <h1>Choose cuisines</h1>
+        <li class={{each.categories.selected}} ng-repeat="each in list.categoriesObj" ng-click="list.showSpecificCategory(each.categories.id);each.categories.selected = !each.categories.selected">
+          {{each.categories.name}}
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

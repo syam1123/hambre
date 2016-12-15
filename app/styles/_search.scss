@@ -7,7 +7,6 @@
   padding: 50px;
   background: rgba(255,255,255,0.43);
   border-radius: 10px;
-  border: 1px solid #009688;
   md-autocomplete{
     flex: 1;
   }
@@ -33,4 +32,20 @@
       font-weight: 500;
     }
   }
+}
+.detect-btn{
+  background: red;
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+.search-btn{
+  color: white;
+  border: none;
+  border-radius: 5px;
+  background: #4CAF50;
+  font-weight: 500;
 }

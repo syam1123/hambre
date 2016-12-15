@@ -23,7 +23,8 @@
           url: API_ENDPOINT + APIPATH.locations,
           method: 'GET',
           params: {
-            query: query
+            query: query,
+            count: 10
           }
         })
         .then(function (data) {
