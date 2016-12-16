@@ -12,6 +12,7 @@
   .restaurant-list-container{
     display: flex;
     justify-content: space-around;
+    padding-bottom: 33px;
     .left-filters, .right-filters{
       width: 225px;
       background: transparent;
@@ -80,6 +81,7 @@
       padding: 33px 10px;
       border-radius: 7px;
       box-shadow: 0px 0px 7px 2px #ddd;
+      min-height: 50vh;
       .resto-small-card{
         width: 30%;
 //        padding: .5%;
@@ -168,11 +170,103 @@
   }
 }
 
+.no-content{
+  width: 100%;
+  display: flex;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  font-size: 33px;
+  color: #FF5722;
+}
+.loader{
+  width: 100%;
+  display: flex;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.category-select{
+  text-align: center;
+  display: none;
+}
+md-input-container{
+  background: rgb(211, 20, 52);
+  color: white;
+  border-radius: 5px;
+  &.md-input-has-value label{
+    display: none;
+  }
+  label{
+    color: white;
+  }
+  md-select-value{
+    color: white;
+    border-bottom: none;
+    /* display: none; */
+    max-width: 200px;
+    width: 200px;
+    &.md-select-value{
+      border-radius: 4px;
+      border-bottom: none;
+      font-weight: 600;
+    }
+    span{
+      margin-top: -5px;
+    }
+  }
+  .md-select-value .md-select-icon{
+    display: none;
+  }
+}
+md-select.md-default-theme:not([disabled]):focus .md-select-value, md-select:not([disabled]):focus .md-select-value{
+  color: white;
+}
+md-select.md-default-theme .md-select-value.md-select-placeholder, md-select .md-select-value.md-select-placeholder{
+  color: white;
+}
+md-select:not([disabled]):focus .md-select-value{
+  border-bottom: none;
+}
+
 @media screen and (min-width: 1500px){
   .restaurant-page .restaurant-list-container .left-filters, .restaurant-page .restaurant-list-container .right-filters{
     width: 270px;
   }
   .restaurant-page .restaurant-list-container .restaurant-list{
     max-width: 850px;
+  }
+}
+
+@media screen and (max-width: 1080px){
+  .left-filters, .right-filters{
+    display: none;
+  }
+  .category-select{
+    display: block;
+  }
+}
+
+@media screen and (max-width: 800px){
+  .restaurant-page .restaurant-list-container .restaurant-list{
+    max-width: 90%;
+  }
+}
+@media screen and (max-width: 600px){
+  .restaurant-page .restaurant-list-container .restaurant-list .resto-small-card h2{
+    font-size: 14px;
+    }
+  .restaurant-page .restaurant-list-container .restaurant-list .resto-small-card .address{
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .restaurant-page .restaurant-list-container .restaurant-list .resto-small-card{
+    width: 45%;
+  }
+  .restaurant-page h1{
+    font-size: 18px;
   }
 }

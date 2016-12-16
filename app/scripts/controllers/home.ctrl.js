@@ -1,7 +1,7 @@
 (function (){
 
   angular.module('hambreApp')
-    .controller('homeCtrl', ['$scope', 'commonApiService', '$state', function($scope, commonApiService, $state){
+    .controller('homeCtrl', ['$scope', 'commonApiService', '$state', function($scope, commonApiService, $state, $state){
 
       var home = this;
 

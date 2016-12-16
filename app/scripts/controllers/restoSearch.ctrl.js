@@ -67,12 +67,14 @@
     }
     
     resto.getlocation = function(){
+      resto.buttonState = true
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position){
           $scope.$apply(function(){
             $scope.position = position;
             commonApiService.getGeoCode($scope.position.coords).then(function(response){
               resto.selectedItem = response.data.location
+              resto.buttonState = false
             })
           });
         });
@@ -80,6 +82,7 @@
     }
     
     function searchRestos(locObj){
+      resto.searchBtnActive = true;
       $localStorage.locationData = locObj
       var query = {"lat": locObj.latitude,
                    "lon": locObj.longitude}

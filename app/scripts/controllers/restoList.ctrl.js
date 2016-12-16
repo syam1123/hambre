@@ -12,6 +12,7 @@
     list.getRestaurantsToShow = getRestaurantsToShow
     list.getMoreDetails = getMoreDetails
     list.showSpecificCategory = showSpecificCategory
+    list.searchCategory = searchCategory
     
     list.init = function(){
       list.restaurants = $localStorage.nearbyRestos
@@ -31,18 +32,7 @@
       $state.go('home.restaurantDetail', {'id': id})
     }
     
-    function showSpecificCategory(id){
-      
-      if(list.selectedCategories.indexOf(id) < 0){
-        list.selectedCategories.push(id)
-      }
-      else{
-        list.selectedCategories.splice(list.selectedCategories.indexOf(id), 1)
-      }
-      var categories = {'category': list.selectedCategories.join(','),
-                        'lat': $localStorage.locationData.latitude,
-                        'lon': $localStorage.locationData.longitude}
-      
+    function getAllRestorants(choice){
       list.restaurantsToShow = []
       list.showLoader = true
       var filter = true
@@ -62,11 +52,38 @@
           count = 19
         }
         
-        restaurantApiService.searchForRestos(categories, newOffset, count, filter).then(function(res){
+        restaurantApiService.searchForRestos(choice, newOffset, count, filter).then(function(res){
           list.restaurantsToShow.push.apply(list.restaurantsToShow, res.data.restaurants)
           list.showLoader = false
         })
       }
+    }
+    
+    function showSpecificCategory(id){
+      
+      if(list.selectedCategories.indexOf(id) < 0){
+        list.selectedCategories.push(id)
+      }
+      else{
+        list.selectedCategories.splice(list.selectedCategories.indexOf(id), 1)
+      }
+      var categories = {'category': list.selectedCategories.join(','),
+                        'lat': $localStorage.locationData.latitude,
+                        'lon': $localStorage.locationData.longitude}
+      
+      getAllRestorants(categories)
+      
+    }
+    
+    function searchCategory(){
+      var categoryIds = ''
+      if(list.choosedCategories.length > 0){
+        categoryIds = list.choosedCategories.join(',')
+      }
+      var categories = {'category': list.choosedCategories.join(','),
+                        'lat': $localStorage.locationData.latitude,
+                        'lon': $localStorage.locationData.longitude}
+      getAllRestorants(categories)
       
     }
   }

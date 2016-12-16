@@ -51,14 +51,18 @@
       p{
         margin: 3px 0px;
         font-weight: 400;
+        &:last-child{
+          color: #795548;
+        }
       }
     }
     .name-container{
       display: flex;
       align-items: center;
+      margin: 10px 0px;
       h1{
         flex: 1;
-        margin-bottom: 0;
+        margin: 0;
       }
       .online-order{
         background: green;
@@ -67,6 +71,7 @@
         font-weight: 500;
         font-size: 22px;
         margin-right: -23px;
+        text-decoration: none;
         &.order-available-0{
           background: #9E9E9E;
           cursor: not-allowed;
@@ -213,5 +218,131 @@
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 800px){
+  .restaurant-detail{
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .restaurant-detail .detail-container .name-container h1{
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 550px){
+  .restaurant-detail .detail-container .image-container{
+    height: 150px;
+  }
+  .restaurant-detail .detail-container .image-container .button-container{
+    margin-top: 115px;
+  }
+  .restaurant-detail .detail-container .image-container .photos{
+    font-size: 12px;
+  }
+  .restaurant-detail .detail-container .image-container .take-to-zomato{
+    font-size: 12px;
+  }
+  .restaurant-detail .detail-container .name-container h1{
+    font-size: 18px;
+  }
+  .restaurant-detail .detail-container .name-container .online-order{
+    font-size: 18px;
+    &:before{
+      content: "";
+      position: absolute;
+      margin-left: -33px;
+      margin-top: -6px;
+      border-top: 17px solid transparent;
+      border-bottom: 17px solid transparent;
+      border-left: 17px solid white;
+    }
+  }
+  .resto-reviews .each-review .review-details .review-text{
+    font-size: 12px;
+  }
+  .restaurant-detail .detail-container .address{
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 450px){
+  .angular-google-map-container{
+    height: 250px;
+  }
+  .restaurant-detail .detail-container .name-container h1{
+    font-size: 16px;
+  }
+  .restaurant-detail .detail-container .address p{
+    font-size: 13px;
+  }
+  .map-container h1{
+    font-size: 20px;
+  }
+  .resto-reviews .heading .review div{
+    padding: 3px 5px;
+    border-radius: 3px;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .resto-reviews .heading .review h1{
+    font-size: 20px;
+    margin: 5px;
+  }
+  .resto-reviews .each-review .profile img{
+    max-width: 60px;
+    margin-left: 0;
+  }
+  .resto-reviews .each-review .profile .profile-details h3{
+    font-size: 16px;
+  }
+  .resto-reviews .each-review .profile .profile-details p{
+    font-size: 13px;
+  }
+  .resto-reviews{
+    padding: 15px 10px;
+  }
+  .resto-reviews .each-review .review-details{
+    margin: 10px 0px;
+  }
+}
+
+@media screen and (max-width: 375px){
+  .restaurant-detail{
+    padding: 10px 5px;
+  }
+}
+
+@media screen and (max-width: 330px){
+  .restaurant-detail .detail-container{
+    padding: 7px;
+  }
+  .restaurant-detail .detail-container .image-container{
+    height: 140px;  
+  }
+  .restaurant-detail .detail-container .image-container .button-container{
+    margin-top: 100px;
+  }
+  .restaurant-detail .detail-container .image-container .photos{
+    font-size: 11px;
+  }
+  .restaurant-detail .detail-container .name-container{
+    margin: 6px 0px;
+  }
+  .restaurant-detail .detail-container .name-container .online-order{
+    margin-right: -14px;
+  }
+  .restaurant-detail .detail-container .address p{
+    font-size: 11px;
+  }
+  .angular-google-map-container{
+    height: 175px;
+  }
+  .map-container h1{
+    font-size: 18px;
   }
 }

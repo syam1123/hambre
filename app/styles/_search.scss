@@ -5,7 +5,7 @@
   margin: auto;
   max-width: 950px;
   padding: 50px;
-  background: rgba(255,255,255,0.43);
+  background: rgba(255,255,255,0.2);
   border-radius: 10px;
   md-autocomplete{
     flex: 1;
@@ -13,6 +13,9 @@
   >button{
     height: 40px;
     margin-left: 14px;
+  }
+  .auto-container{
+    flex: 1;
   }
 }
 .search-container{
@@ -33,19 +36,86 @@
     }
   }
 }
+.search-btn-container{
+  margin: 0px 5px;
+}
 .detect-btn{
-  background: red;
+  background: rgb(211, 20, 52);
+}
+.search-btn{
+  background: #4CAF50;
+}
+.detect-btn, .search-btn{
   color: white;
   font-weight: 500;
   font-size: 18px;
   border-radius: 5px;
   border: none;
   outline: none;
+  padding: 5px 15px;
+  height: 40px;
 }
-.search-btn{
-  color: white;
-  border: none;
-  border-radius: 5px;
-  background: #4CAF50;
-  font-weight: 500;
+
+.detect-btn{
+  i.active{
+    animation: rotate-icon 2s infinite linear;
+    -webkit-animation: rotate-icon 1.2s infinite linear;
+  }
+}
+.search-btn.active{
+  animation: wave-btn 2s infinite linear;
+  -webkit-animation: wave-btn .7s infinite linear;
+}
+
+@keyframes wave-btn{
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: .7;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
+@keyframes rotate-icon{
+  0%{
+    transform: rotate(0deg);
+  }
+  50%{
+    transform: rotate(90deg)
+  }
+  100%{
+    transform: rotate(0deg)
+  }
+}
+
+@media screen and (max-width: 550px){
+  .location-search{
+    flex-wrap: wrap;
+  }
+  .auto-container{
+    width: 100%;
+  }
+  .search-btn-container{
+    width: 100%;
+    justify-content: space-between;
+    margin: 0px;
+    margin-top: 5px;
+    display: flex;
+    .detect-btn, .search-btn{
+      width: 49%;
+    }
+  }
+}
+
+@media screen and (max-width: 480px){
+  .location-search{
+    padding: 25px;
+  }
+  .search-container md-content h1{
+    font-size: 24px;
+    margin: 22px;
+  }
 }
