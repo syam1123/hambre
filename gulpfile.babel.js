@@ -11,6 +11,8 @@ var historyApiFallback = require('connect-history-api-fallback')
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
+// since we are using scss, we need to wrap them in a css file before rendering
+
 gulp.task('styles', () => {
   return gulp.src('app/styles/*.scss')
     .pipe($.plumber())
@@ -30,6 +32,8 @@ gulp.task('styles', () => {
     }));
 });
 
+// to test the quality of js file just run gulp lint  (probably have lot of warnings like semicolun, string must have " etc.)
+
 function lint(files, options) {
   return () => {
     return gulp.src(files)
@@ -42,14 +46,9 @@ function lint(files, options) {
       .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
   };
 }
-const testLintOptions = {
-  env: {
-    mocha: true
-  }
-};
+
 
 gulp.task('lint', lint('app/scripts/**/*.js'));
-gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
 gulp.task('html', ['styles'], () => {
   const assets = $.useref.assets({
@@ -96,6 +95,8 @@ gulp.task('fonts', () => {
     .pipe(gulp.dest('.tmp/fonts'))
     .pipe(gulp.dest('dist/fonts'));
 });
+
+// revision all the files otherthan favicon and index.html (to avoid cashing problem)
 
 gulp.task('rev', () => {
   var revAll = require('gulp-rev-all'),
@@ -224,7 +225,7 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['setenv:prod', 'html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['setenv:prod', 'html', 'images', 'fonts', 'extras', 'rev'], () => {
   return gulp.src('dist/**/*').pipe($.size({
     title: 'build',
     gzip: true
@@ -235,7 +236,16 @@ gulp.task('default', ['clean'], () => {
   gulp.start('build');
 });
 
-gulp.task('deploy', function() {
+// deployee minified file to staging
+
+gulp.task('deploy:dev', function() {
   return gulp.src('./dist/**/*')
     .pipe(ghPages());
 });
+
+// to deploy revisioned file to production
+
+gulp.task('deploy:prod', function(){
+  return gulp.src('./www/**/*')
+    .pipe(ghPages());
+})

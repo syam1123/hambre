@@ -1,0 +1,14 @@
+{
+  "favicon.ico": "favicon.ico",
+  "images/gps.gif": "images/gps.39614824.gif",
+  "images/ripple.gif": "images/ripple.2f372940.gif",
+  "index.html": "index.html",
+  "scripts/main.js": "scripts/main.94045d07.js",
+  "scripts/vendor.js": "scripts/vendor.d8e2e883.js",
+  "styles/main.css": "styles/main.aa2a9a56.css",
+  "styles/vendor.css": "styles/vendor.6365c3c8.css",
+  "views/home.tmpl.html": "views/home.tmpl.f153a093.html",
+  "views/restaurentDetail.tmpl.html": "views/restaurentDetail.tmpl.93b60c7e.html",
+  "views/restaurents.tmpl.html": "views/restaurents.tmpl.fbe26b35.html",
+  "views/searchResto.tmpl.html": "views/searchResto.tmpl.4249a565.html"
+}
