@@ -8,7 +8,8 @@ angular
     '720kb.tooltips',
     'angularMoment',
     'ngCookies',
-    'google-maps'
+    'google-maps',
+    'ngSanitize'
   ])
   .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$localStorageProvider', '$httpProvider', function ($locationProvider, $stateProvider, $urlRouterProvider, $localStorageProvider, $httpProvider) {
     $locationProvider.html5Mode(true);
@@ -38,6 +39,11 @@ angular
         resolve: {
           categoriesObj: ['commonApiService', function(commonApiService){
             return commonApiService.getCategory().then(function(res){
+              return res.data;
+            })
+          }],
+          collectionObj: ['commonApiService', '$localStorage', function(commonApiService, $localStorage){
+            return commonApiService.getCollections($localStorage.locationData, 15).then(function(res){
               return res.data;
             })
           }]

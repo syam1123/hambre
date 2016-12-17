@@ -42,10 +42,15 @@
     </div>
     <div class="right-filters">
       <ul class="filter-list">
-        <h1>Choose cuisines</h1>
-        <li class={{each.categories.selected}} ng-repeat="each in list.categoriesObj" ng-click="list.showSpecificCategory(each.categories.id);each.categories.selected = !each.categories.selected">
-          {{each.categories.name}}
-        </li>
+        <div class="trending-list">
+          <h1>Quick divert</h1>
+          <ul>
+            <a ng-repeat="trend in list.trendingCollections" href={{trend.collection.url}} target="_blank" >
+              <img ng-src={{trend.collection.image_url}} alt="">
+              <span ng-bind-html="trend.collection.title"></span>
+            </a>
+          </ul>
+        </div>
       </ul>
     </div>
   </div>

@@ -4,9 +4,9 @@
       .module('hambreApp')
       .controller('restoListCtrl', restoListCtrl);
   
-  restoListCtrl.$inject = ['$scope', 'locationApiService', 'commonApiService', 'restaurantApiService', '$state', '$localStorage', 'categoriesObj']
+  restoListCtrl.$inject = ['$scope', 'locationApiService', 'commonApiService', 'restaurantApiService', '$state', '$localStorage', 'categoriesObj', 'collectionObj']
   
-  function restoListCtrl($scope, locationApiService, commonApiService, restaurantApiService, $state, $localStorage, categoriesObj){
+  function restoListCtrl($scope, locationApiService, commonApiService, restaurantApiService, $state, $localStorage, categoriesObj, collectionObj){
     
     var list = this
     list.getRestaurantsToShow = getRestaurantsToShow
@@ -20,6 +20,7 @@
       list.restaurantsToShow = list.getRestaurantsToShow()
       list.noImage = 'http://balifoodandfun.com/wp-content/themes/balifoodandfun/images/no-image-available.png'
       list.categoriesObj = categoriesObj.categories
+      list.trendingCollections = collectionObj.collections
       list.selectedCategories = []
     }
     list.init()

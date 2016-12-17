@@ -170,6 +170,31 @@
   }
 }
 
+.trending-list{
+  ul{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-around;
+
+    a{
+      padding: 5px;
+      width: 44%;
+      overflow: hidden;
+      max-width: 100px;
+      span{
+        font-size: 12px;
+      }
+    }
+    img{
+      max-width: 100%;
+      border-radius: 5px;
+    }
+  }
+}
+
 .no-content{
   width: 100%;
   display: flex;
