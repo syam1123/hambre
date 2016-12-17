@@ -40,12 +40,12 @@
   "images/gps.gif": "images/gps.39614824.gif",
   "images/ripple.gif": "images/ripple.2f372940.gif",
   "index.html": "index.html",
-  "scripts/main.js": "scripts/main.7dc01f75.js",
-  "scripts/vendor.js": "scripts/vendor.91c61f11.js",
+  "scripts/main.js": "scripts/main.2380f186.js",
+  "scripts/vendor.js": "scripts/vendor.90c53148.js",
   "styles/main.css": "styles/main.8b48d7ae.css",
   "styles/vendor.css": "styles/vendor.6365c3c8.css",
   "views/home.tmpl.html": "views/home.tmpl.f153a093.html",
-  "views/restaurentDetail.tmpl.html": "views/restaurentDetail.tmpl.93b60c7e.html",
-  "views/restaurents.tmpl.html": "views/restaurents.tmpl.97ed6025.html",
+  "views/restaurentDetail.tmpl.html": "views/restaurentDetail.tmpl.dfff6171.html",
+  "views/restaurents.tmpl.html": "views/restaurents.tmpl.4ca98e4e.html",
   "views/searchResto.tmpl.html": "views/searchResto.tmpl.a62a1fca.html"
 }

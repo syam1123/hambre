@@ -104,7 +104,16 @@
               $scope.locationGot = true;
             })
           });
-        }, null, {enableHighAccuracy: true});
+        }, function(){
+          $mdToast.show(
+            $mdToast.simple()
+              .textContent('Sorry! Your navigator is not responding')
+              .position('top')
+              .hideDelay(5000)
+          );
+          resto.buttonState = false
+          $scope.locationGot = true;
+        }, {enableHighAccuracy: true});
       }
     }
     
