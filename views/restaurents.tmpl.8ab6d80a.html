@@ -1,0 +1,57 @@
+<div class="restaurant-page">
+  <h1>Here are some restaurants near {{list.locatiosData.title}}</h1>
+  <div class="category-select">
+    <md-input-container>
+      <label>Categories</label>
+      <md-select ng-model="list.choosedCategories"
+                 md-on-close="list.searchCategory()"
+                 data-md-container-class="selectdemoSelectHeader"
+                 multiple>
+        <md-optgroup label="Categories">
+          <md-option ng-value="each.categories.id" ng-repeat="each in list.categoriesObj">{{each.categories.name}}</md-option>
+        </md-optgroup>
+      </md-select>
+    </md-input-container>
+  </div>
+  <div class="restaurant-list-container">
+    <div class="left-filters">
+      <ul class="filter-list">
+        <h1>Choose categories</h1>
+        <li class={{each.categories.selected}} ng-repeat="each in list.categoriesObj" ng-click="list.showSpecificCategory(each.categories.id);each.categories.selected = !each.categories.selected">
+          {{each.categories.name}}
+        </li>
+      </ul>
+    </div>
+    
+    <div class="restaurant-list">
+      <div class="loader" ng-if="list.showLoader">
+        <img src="../images/ripple.2f372940.gif" alt="">
+      </div>
+      <div class="no-content" ng-if="!list.showLoader && !(list.restaurantsToShow.length > 0)">
+        Oops! No restaurant available ☹️
+      </div>
+      <div class="resto-small-card" ng-repeat="rest in list.restaurantsToShow" ng-click="list.getMoreDetails(rest.restaurant.id)">
+        <img ng-if="rest.restaurant.thumb" ng-src={{rest.restaurant.thumb}} alt="">
+        <img ng-if="!rest.restaurant.thumb" ng-src={{list.noImage}} alt="">
+        <span class="user-rating">
+          <span class={{rest.restaurant.user_rating.rating_text}}>{{rest.restaurant.user_rating.aggregate_rating}}</span>
+        </span>
+        <h2>{{rest.restaurant.name}}</h2>
+        <span class="address">{{rest.restaurant.location.locality}}</span>
+      </div>
+    </div>
+    <div class="right-filters">
+      <ul class="filter-list">
+        <div class="trending-list">
+          <h1>Quick divert</h1>
+          <ul>
+            <a ng-repeat="trend in list.trendingCollections" href={{trend.collection.url}} target="_blank" >
+              <img ng-src={{trend.collection.image_url}} alt="">
+              <span ng-bind-html="trend.collection.title"></span>
+            </a>
+          </ul>
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>
