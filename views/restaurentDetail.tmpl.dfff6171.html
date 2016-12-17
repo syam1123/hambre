@@ -1,0 +1,46 @@
+<div class="restaurant-detail">
+  <div class="detail-container">
+    <div class="image-container">
+      <img ng-if="detail.restoData.featured_image" ng-src={{detail.restoData.featured_image}} alt="">
+      <img ng-if="!detail.restoData.featured_image" ng-src={{detail.noImage}} alt="">
+      <div class="button-container">
+        <a class="photos" href={{detail.restoData.photos_url}} target="_blank">More photos</a>
+        <a class="take-to-zomato" href={{detail.restoData.url}} target="_blank">Take me to zomato</a>
+      </div>
+    </div>
+    <div class="name-container">
+      <h1>{{detail.restoData.name}}</h1>
+      <a class="online-order order-available-{{detail.restoData.is_delivering_now}}" href={{detail.restoData.url}} target="_blank">{{detail.restoData.has_online_delivery? 'Order online': 'No delivery'}}</a>
+    </div>
+    <div class="address">
+      <p>{{detail.restoData.location.address}}</p>
+      <p>Avg. cost for two: {{detail.restoData.currency}} {{detail.restoData.average_cost_for_two}}</p>
+    </div>
+    
+    <div class="map-container">
+      <h1>Hey! It's not too far.</h1>
+      <google-map control="detail.map.control" center="detail.map.center" zoom="detail.map.zoom">
+        <marker coords="detail.marker.center"></marker>
+      </google-map>
+    </div>
+  </div>
+  <div class="resto-reviews">
+    <div class="heading">
+      <h2>Reviews</h2>
+      <div class="review"><div class={{detail.restoData.user_rating.rating_text}}>{{detail.restoData.user_rating.aggregate_rating}}</div></div>
+    </div>
+    <div class="each-review" ng-repeat="review in detail.reviews">
+      <div class="profile">
+        <img ng-src="{{review.review.user.profile_image}}" alt="">
+        <div class="profile-details">
+          <h3>{{review.review.user.name}}</h3>
+          <p>{{review.review.user.foodie_level}}</p>
+        </div>
+      </div>
+      <div class="review-details">
+        <p class="time">{{review.review.review_time_friendly}}</p>
+        <span class="review-text"><b>Rated</b> <span class={{review.review.rating_text}} style="background: #{{review.review.rating_color}}">{{review.review.rating}}</span> : {{review.review.review_text}}</span>
+      </div>
+    </div>
+  </div>
+</div>
