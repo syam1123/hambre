@@ -13,6 +13,10 @@
     detail.noImage = 'http://balifoodandfun.com/wp-content/themes/balifoodandfun/images/no-image-available.png'
     
     detail.init = function(){
+      if(!RestaruantDetail){
+        $state.go('home.restaurants')
+        return;
+      }
       detail.userLocation = $localStorage.locationData
       detail.storeLocation = detail.restoData.location
       detail.reviews = ReviewObj.user_reviews

@@ -4,13 +4,12 @@
       .module('hambreApp')
       .controller('restoSearchCtrl', restoSearchCtrl);
   
-  restoSearchCtrl.$inject = ['$scope', 'locationApiService', 'commonApiService', 'restaurantApiService', '$state', '$localStorage', '$document']
+  restoSearchCtrl.$inject = ['$scope', 'locationApiService', 'commonApiService', 'restaurantApiService', '$state', '$localStorage', '$document', '$timeout', '$mdToast']
 
-  function restoSearchCtrl ($scope, locationApiService, commonApiService, restaurantApiService, $state, $localStorage, $document) {
+  function restoSearchCtrl ($scope, locationApiService, commonApiService, restaurantApiService, $state, $localStorage, $document, $timeout, $mdToast) {
     
     var resto = this
     resto.locationSuggestions = []
-    resto.states        = loadAll();
     resto.querySearch   = querySearch;
     resto.selectedItemChange = selectedItemChange;
     resto.searchTextChange   = searchTextChange;
@@ -21,6 +20,12 @@
     
     self.init = function(){
       $localStorage.nearbyRestos = []
+      
+      locationApiService.getAllLocations('new', 10).then(function(res){
+        resto.locationSuggestions = res.data.location_suggestions
+        resto.allLocation        = loadAll();
+      })
+      
     }
     
     self.init()
@@ -68,6 +73,27 @@
     
     resto.getlocation = function(){
       resto.buttonState = true
+      $timeout(function(){
+            if(!$scope.locationGot){
+              $mdToast.show(
+                $mdToast.simple()
+                  .textContent('Hold on! sometimes it will take some time')
+                  .position('top')
+                  .hideDelay(3000)
+              );
+            }
+          }, 5000)
+          $timeout(function(){
+            if(!$scope.locationGot){
+              $mdToast.show(
+                $mdToast.simple()
+                  .textContent('Sorry! can\'t get your location')
+                  .position('top')
+                  .hideDelay(5000)
+              );
+              resto.buttonState = false
+            }
+          }, 10000)
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position){
           $scope.$apply(function(){
@@ -75,9 +101,10 @@
             commonApiService.getGeoCode($scope.position.coords).then(function(response){
               resto.selectedItem = response.data.location
               resto.buttonState = false
+              $scope.locationGot = true;
             })
           });
-        });
+        }, null, {enableHighAccuracy: true});
       }
     }
     

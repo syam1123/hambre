@@ -1,8 +1,8 @@
 <div class="restaurant-detail">
   <div class="detail-container">
     <div class="image-container">
-      <img ng-if="detail.restoData.featured_image" src={{detail.restoData.featured_image}} alt="">
-      <img ng-if="!detail.restoData.featured_image" src={{detail.noImage}} alt="">
+      <img ng-if="detail.restoData.featured_image" ng-src={{detail.restoData.featured_image}} alt="">
+      <img ng-if="!detail.restoData.featured_image" ng-src={{detail.noImage}} alt="">
       <div class="button-container">
         <a class="photos" href={{detail.restoData.photos_url}} target="_blank">More photos</a>
         <a class="take-to-zomato" href={{detail.restoData.url}} target="_blank">Take me to zomato</a>
@@ -31,7 +31,7 @@
     </div>
     <div class="each-review" ng-repeat="review in detail.reviews">
       <div class="profile">
-        <img src="{{review.review.user.profile_image}}" alt="">
+        <img ng-src="{{review.review.user.profile_image}}" alt="">
         <div class="profile-details">
           <h3>{{review.review.user.name}}</h3>
           <p>{{review.review.user.foodie_level}}</p>

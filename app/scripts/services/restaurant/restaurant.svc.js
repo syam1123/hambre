@@ -4,9 +4,9 @@
   angular.module('hambreApp')
     .factory('restaurantApiService', restaurantApiService)
 
-  restaurantApiService.$inject = ['$http', '$q', '$window', 'HAMBREENV', '$localStorage']
+  restaurantApiService.$inject = ['$http', '$q', '$window', 'HAMBREENV', '$localStorage', '$mdToast']
 
-  function restaurantApiService($http, $q, $window, HAMBREENV, $localStorage) {
+  function restaurantApiService($http, $q, $window, HAMBREENV, $localStorage, $mdToast) {
     var API_ENDPOINT = HAMBREENV.API_ENDPOINT,
         APIPATH = {
           search: 'api/v2.1/search',
@@ -44,6 +44,12 @@
         }
       },function(data){
         deferred.resolve(data);
+        $mdToast.show(
+          $mdToast.simple()
+            .textContent('Sorry! Our server is down, please try again later')
+            .position('top')
+            .hideDelay(5000)
+        );
       })
 
       return deferred.promise;
@@ -68,6 +74,12 @@
         $localStorage.nearbyRestos.push.apply($localStorage.nearbyRestos, data.data.restaurants)
       },function(data){
         deferred.resolve(data);
+        $mdToast.show(
+          $mdToast.simple()
+            .textContent('Sorry! Our server is down, please try again later')
+            .position('top')
+            .hideDelay(5000)
+        );
       })
 
       return deferred.promise;
@@ -88,6 +100,12 @@
         $localStorage.nearbyRestos.push.apply($localStorage.nearbyRestos, data.data.restaurants)
       },function(data){
         deferred.resolve(data);
+        $mdToast.show(
+          $mdToast.simple()
+            .textContent('Sorry! Our server is down, please try again later')
+            .position('top')
+            .hideDelay(5000)
+        );
       })
 
       return deferred.promise;

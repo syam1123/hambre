@@ -4,9 +4,9 @@
   angular.module('hambreApp')
     .factory('commonApiService', commonApiService)
 
-  commonApiService.$inject = ['$http', '$q', '$window', 'HAMBREENV', '$localStorage']
+  commonApiService.$inject = ['$http', '$q', '$window', 'HAMBREENV', '$localStorage', '$mdToast']
 
-  function commonApiService($http, $q, $window, HAMBREENV, $localStorage) {
+  function commonApiService($http, $q, $window, HAMBREENV, $localStorage, $mdToast) {
     var API_ENDPOINT = HAMBREENV.API_ENDPOINT,
         APIPATH = {
           category: 'api/v2.1/categories',
@@ -34,6 +34,12 @@
         deferred.resolve(data);
       },function(data){
         deferred.resolve(data);
+        $mdToast.show(
+          $mdToast.simple()
+            .textContent('Sorry! Unable to show categories')
+            .position('top')
+            .hideDelay(5000)
+        );
       })
 
       return deferred.promise;
@@ -55,6 +61,12 @@
         deferred.resolve(data);
       },function(data){
         deferred.resolve(data);
+        $mdToast.show(
+          $mdToast.simple()
+            .textContent('Sorry! Unable to get the collections near your place')
+            .position('top')
+            .hideDelay(5000)
+        );
       })
 
       return deferred.promise;
@@ -75,6 +87,12 @@
         deferred.resolve(data);
       },function(data){
         deferred.resolve(data);
+        $mdToast.show(
+          $mdToast.simple()
+            .textContent('Sorry! something went wrong. please try again')
+            .position('top')
+            .hideDelay(5000)
+        );
       })
 
       return deferred.promise;
@@ -95,6 +113,12 @@
         deferred.resolve(data);
       },function(data){
         deferred.resolve(data);
+        $mdToast.show(
+          $mdToast.simple()
+            .textContent('Sorry! Unable to get the cuisins near your place')
+            .position('top')
+            .hideDelay(5000)
+        );
       })
 
       return deferred.promise;

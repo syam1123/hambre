@@ -4,9 +4,9 @@
   angular.module('hambreApp')
     .factory('locationApiService', locationApiService)
 
-  locationApiService.$inject = ['$http', '$q', '$window', 'HAMBREENV']
+  locationApiService.$inject = ['$http', '$q', '$window', 'HAMBREENV', '$mdToast']
 
-  function locationApiService($http, $q, $window, HAMBREENV) {
+  function locationApiService($http, $q, $window, HAMBREENV, $mdToast) {
     var API_ENDPOINT = HAMBREENV.API_ENDPOINT,
         APIPATH = {
           locations: 'api/v2.1/locations',
@@ -31,6 +31,12 @@
           deferred.resolve(data);
         },function(data){
           deferred.resolve(data);
+          $mdToast.show(
+            $mdToast.simple()
+              .textContent('Sorry! Our server is down, please try again later')
+              .position('top')
+              .hideDelay(5000)
+          );
         })
 
       return deferred.promise;

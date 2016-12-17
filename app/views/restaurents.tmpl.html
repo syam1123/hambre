@@ -31,8 +31,8 @@
         Oops! No restaurant available ☹️
       </div>
       <div class="resto-small-card" ng-repeat="rest in list.restaurantsToShow" ng-click="list.getMoreDetails(rest.restaurant.id)">
-        <img ng-if="rest.restaurant.thumb" src={{rest.restaurant.thumb}} alt="">
-        <img ng-if="!rest.restaurant.thumb" src={{list.noImage}} alt="">
+        <img ng-if="rest.restaurant.thumb" ng-src={{rest.restaurant.thumb}} alt="">
+        <img ng-if="!rest.restaurant.thumb" ng-src={{list.noImage}} alt="">
         <span class="user-rating">
           <span class={{rest.restaurant.user_rating.rating_text}}>{{rest.restaurant.user_rating.aggregate_rating}}</span>
         </span>

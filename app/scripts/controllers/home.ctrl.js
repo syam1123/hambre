@@ -1,7 +1,7 @@
 (function (){
 
   angular.module('hambreApp')
-    .controller('homeCtrl', ['$scope', 'commonApiService', '$state', function($scope, commonApiService, $state, $state){
+    .controller('homeCtrl', ['$scope', 'commonApiService', '$state', '$timeout', '$mdToast', function($scope, commonApiService, $state, $state, $timeout, $mdToast){
 
       var home = this;
 
@@ -9,17 +9,6 @@
 //        Nothing for now
       }
       home.init()
-
-      home.getlocation = function(){
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position){
-            $scope.$apply(function(){
-              $scope.position = position;
-              commonApiService.getGeoCode($scope.position.coords)
-            });
-          });
-        }
-      }
 
     }]);
     
