@@ -43,7 +43,7 @@ angular
             })
           }],
           collectionObj: ['commonApiService', '$localStorage', function(commonApiService, $localStorage){
-            return commonApiService.getCollections($localStorage.locationData, 15).then(function(res){
+            return commonApiService.getCollections($localStorage.locationData, 20).then(function(res){
               return res.data;
             })
           }]
