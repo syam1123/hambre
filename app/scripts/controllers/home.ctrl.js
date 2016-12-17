@@ -7,6 +7,8 @@
 
       home.init = function(){
 //        Nothing for now
+//        Currently home state is abstracted. Nothing more functionalities.
+//        eventually will add search field in header
       }
       home.init()
 

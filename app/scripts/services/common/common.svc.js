@@ -23,6 +23,8 @@
       getCuisines: getCuisines
     }
     
+//    service to get all category list nearby user location
+    
     function getCategory(){
       var deferred = $q.defer();
 
@@ -44,6 +46,8 @@
 
       return deferred.promise;
     } 
+    
+//    get all collections nearby location
     
     function getCollections(locObj, count){
       var deferred = $q.defer();
@@ -72,6 +76,8 @@
       return deferred.promise;
     }
     
+//    getting location details from longitude and latitude vaues
+    
     function getGeoCode(locObj){
       var deferred = $q.defer();
 
@@ -97,6 +103,8 @@
 
       return deferred.promise;
     }
+    
+//    getting cuisins details nearby location
     
     function getCuisines(locObj){
       var deferred = $q.defer();

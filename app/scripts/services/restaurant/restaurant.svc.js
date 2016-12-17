@@ -20,6 +20,8 @@
       getReviews: getReviews
     }
     
+//    function to search all restaurants in a location
+    
     function searchForRestos(locObj, offset, count, filter){
       var deferred = $q.defer();
 
@@ -55,6 +57,8 @@
       return deferred.promise;
     } 
     
+//    function to get all reviews about a restauran
+    
     function getReviews(id, offset, count){
       var offsetVal = offset? offset: 0
       var totalCount = count? count: 20
@@ -84,6 +88,8 @@
 
       return deferred.promise;
     } 
+    
+//    function to get details about a restaurant
     
     function getRestoDetail(id){
       var deferred = $q.defer();

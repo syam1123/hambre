@@ -9,12 +9,18 @@
   function restoListCtrl($scope, locationApiService, commonApiService, restaurantApiService, $state, $localStorage, categoriesObj, collectionObj){
     
     var list = this
+    
+//    Initialise all functions here to new variable so that to improve minifying/uglifying js
+    
     list.getRestaurantsToShow = getRestaurantsToShow
     list.getMoreDetails = getMoreDetails
     list.showSpecificCategory = showSpecificCategory
     list.searchCategory = searchCategory
     
     list.init = function(){
+      
+//      initialising variables that can be used for rendering
+      
       list.restaurants = $localStorage.nearbyRestos
       list.locatiosData = $localStorage.locationData
       list.restaurantsToShow = list.getRestaurantsToShow()
@@ -26,6 +32,9 @@
     list.init()
     
     function getRestaurantsToShow(){
+      
+//      assign variable through function returns rather than using var a = var b. Javascript binding issue
+      
       return (list.restaurants)
     }
     

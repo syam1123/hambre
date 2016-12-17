@@ -38,11 +38,13 @@ angular
         controllerAs: 'list',
         resolve: {
           categoriesObj: ['commonApiService', function(commonApiService){
+//            Get all categories before html is rendering
             return commonApiService.getCategory().then(function(res){
               return res.data;
             })
           }],
           collectionObj: ['commonApiService', '$localStorage', function(commonApiService, $localStorage){
+//            get the collections before html is rendering
             return commonApiService.getCollections($localStorage.locationData, 20).then(function(res){
               return res.data;
             })
@@ -56,11 +58,13 @@ angular
         controllerAs: 'detail',
         resolve: {
           RestaruantDetail:['restaurantApiService', '$stateParams', function (restaurantApiService, $stateParams) {
+//            get the restaurant detail before rendering html to avoid blank page
             return restaurantApiService.getRestoDetail($stateParams.id).then(function(res) {
                 return res.data
               })
           }],
           ReviewObj:['restaurantApiService', '$stateParams', function (restaurantApiService, $stateParams) {
+//            get the restaurant detail before rendering html to avoid blank page
             return restaurantApiService.getReviews($stateParams.id).then(function(res) {
                 return res.data
               })
@@ -83,6 +87,9 @@ angular
     if (!$cookies.get('userkey')) $cookies.put('userkey', HAMBREENV.USER_KEY)
   }])
   .config(['$httpProvider', 'HAMBREENV', function ($httpProvider, HAMBREENV) {
+    
+//    setup header for api call $http request
+    
     $httpProvider.defaults.headers.post['Accept'] = 'application/json, text/javascript';
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
     $httpProvider.defaults.headers.common['Accept'] = 'application/json, text/javascript';
